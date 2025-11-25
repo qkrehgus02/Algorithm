@@ -29,7 +29,7 @@ while deq:
         px = x + dx[i]
         py = y + dy[i]
         
-        if(0 <= px < n and 0 <= py < m ): #유효한 공간이거나 방문하지 않은 경우에만 탐색
+        if(0 <= px < n and 0 <= py < m): #유효한 공간이거나 방문하지 않은 경우에만 탐색
             w = graph[px][py]
             new_cost = cost[x][y] + w
             
