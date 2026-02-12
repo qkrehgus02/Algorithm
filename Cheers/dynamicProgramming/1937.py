@@ -24,13 +24,9 @@ for i in range(n):
                 if graph[cx][cy] < graph[i][j]:
                     degree[i][j] += 1
 
-
 queue = deque()
 
-
-
-    
-#2 DFS로 
+#2 위상정렬으로 DP 갱신
 for i in range(n):
     for j in range(n):
         if degree[i][j] == 0:
