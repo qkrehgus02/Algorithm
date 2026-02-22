@@ -16,7 +16,7 @@ for _ in range(e):
 
 order = 0
 
-is_cut = [False] * (v+1)
+ans = []
 
 def dfs(node, parent):
     global order
@@ -31,20 +31,17 @@ def dfs(node, parent):
             dfs(child, node)
             low[node] = min(low[node], low[child])
 
-            if parent != 0 and low[child] >= disc[node]:
-                is_cut[node] = True
+            if low[child] > disc[node]:
+                ans.append([min(node, child), max(node, child)])
         elif child != parent:
             low[node] = min(low[node], disc[child])
-
-    if parent == 0 and child_count >= 2:
-        is_cut[node] = True
 
 for i in range(1, v+1):
     if not visited[i]:
         visited[i] = True
         dfs(i, 0)
 
-anslist = [i for i in range(1, v+1) if is_cut[i]]
-anslist.sort()
-print(len(anslist))
-print(*anslist)
+ans.sort()
+print(len(ans))
+for i in range(len(ans)):
+    print(ans[i][0], ans[i][1])
